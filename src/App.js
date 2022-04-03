@@ -12,6 +12,32 @@ import { useState } from 'react';
 
 function App() {
   const [searchText, setSearchText] = useState('');
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "My First Post",
+      body: "Lorem ipsum dolor",
+      dateTime: "July 01, 2021 11:17:36 AM"
+    },
+    {
+      id: 2,
+      title: "My Second Post",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      dateTime: "July 01, 2021 11:17:36 AM"
+    },
+    {
+      id: 3,
+      title: "My Third Post",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      dateTime: "July 01, 2021 11:17:36 AM"
+    }
+  ])
+
+
+
+  const handleDelete = (id) => {
+    setPosts(posts.filter(post => (post.id !== id)))
+  }
   return (
     <div className="App">
       <Header />
@@ -19,9 +45,9 @@ function App() {
       searchText={searchText}
       setSearchText={setSearchText}/>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home posts={posts}/>}></Route>
         <Route path="/post" element={<NewPost />}></Route>
-        <Route path="/post/:id" element={<PostDetails />}></Route>
+        <Route path="/post/:id" element={<PostDetails posts={posts} handleDelete={handleDelete}/>}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="*" element={<Missing />}></Route>
       </Routes>

@@ -1,7 +1,8 @@
-const Home = () => {
+import Post from './Post';
+const Home = ({ posts }) => {
     return (
         <main>
-            <h1>Home</h1>
+            {posts.map(post => <Post key={post.id} post={post}/>)}
         </main>
     )
 }
