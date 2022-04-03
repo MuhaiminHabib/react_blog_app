@@ -37,7 +37,9 @@ function App() {
 
   const handleDelete = (id) => {
     setPosts(posts.filter(post => (post.id !== id)))
+    console.log("deleted", id)
   }
+
   return (
     <div className="App">
       <Header />
