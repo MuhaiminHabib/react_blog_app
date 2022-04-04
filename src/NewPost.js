@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Button from './Button';
 
-const NewPost = () => {
+const NewPost = ({ handleAddPost }) => {
     const [postTitle, setPostTitle] = useState('');
     const [postBody, setPostBody] = useState('');
     return (
@@ -26,6 +27,11 @@ const NewPost = () => {
                     value={postBody}
                     onChange={(e) => (setPostBody(e.target.value))}/>
                 </div>
+                <Button 
+                color="white"
+                bgColor="green"
+                text="Add Post"
+                onClick={handleAddPost}/>
             </form>
         </main>
     )
