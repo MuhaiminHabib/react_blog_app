@@ -1,9 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Button from './Button';
 const PostDetails = ({posts, handleDelete}) => {
 
     const {id} = useParams();
     const post = posts.filter(post => ((post.id).toString() === id));
+    const navigate = useNavigate();
     return (
         <main>
             <article>
@@ -16,7 +17,11 @@ const PostDetails = ({posts, handleDelete}) => {
                 color="white"
                 bgColor="red"
                 text="Delete Post"
-                onClick={() => handleDelete(id)}/>
+                onClick={() => 
+                {
+                    handleDelete(id)
+                    navigate("/")
+                }}/>
             <Link to="/">Back to Home Page</Link>
         </main>
     )

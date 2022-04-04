@@ -36,7 +36,8 @@ function App() {
 
 
   const handleDelete = (id) => {
-    setPosts(posts.filter(post => (post.id !== id)))
+    setPosts(posts.filter(post => ((post.id).toString() !== id.toString())))
+    console.log(posts)
     console.log("deleted", id)
   }
 
